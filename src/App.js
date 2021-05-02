@@ -4,25 +4,19 @@ import axios from 'axios';
 
 import './App.css';
 import Playlist from './components/Playlist';
+import Form from './components/Form'
 
 class App extends Component {
   constructor() {
     super()
     this.state = {
-      playlist: [
-        {
-          id: 0,
-          song: 'watch your step ft. kelis',
-          artist: 'disclosure',
-          album: 'energy'
-        }
-      ]
+      tracks: []
     }
   }
   componentDidMount() {
     axios.get('/api/tracks')
     .then((res) => {
-      this.setState({playlist: res.data})
+      this.setState({tracks: res.data})
     })
     .catch((err) =>{
       console.log(err)
@@ -32,7 +26,7 @@ class App extends Component {
   addTrack = (song, artist, album) => {
     axios.post('api/tracks', {song, artist, album})
     .then((res) => {
-      this.setState({playlist: res.data})
+      this.setState({tracks: res.data})
     })
     .catch((err) => {
       console.log(err)
@@ -42,7 +36,7 @@ class App extends Component {
   editTrack = (id, song) => {
     axios.put(`/api/tracks/${id}`, {song})
     .then((res) => {
-      this.setState({playlist: res.data})
+      this.setState({tracks: res.data})
     })
     .catch((err) => {
       console.log(err)
@@ -52,7 +46,7 @@ class App extends Component {
   delTrack = (id) => {
     axios.delete(`/api/tracks/${id}`)
     .then((res) => {
-      this.setState({playlist: res.data})
+      this.setState({tracks: res.data})
     })
     .catch((err) => {
       console.log(err)
@@ -62,7 +56,12 @@ class App extends Component {
   render() { 
     return (
       <div className="App">
-        <Playlist />
+        <Form addTrack={this.addTrack}/>
+        <Playlist 
+          tracks={this.state.tracks}
+          delTrack={this.delTrack}
+          editTrack={this.editTrack}
+        />
       </div>
     );
   }
