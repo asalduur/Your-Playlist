@@ -1,4 +1,6 @@
 import {Component} from 'react'
+import {BsTrash} from 'react-icons/bs'
+import {BsPencil} from 'react-icons/bs'
 
 class Track extends Component{
   constructor(props){
@@ -13,7 +15,7 @@ class Track extends Component{
     this.setState({ song: e.target.value })
   }
 
-  edit = (e) => {
+  handleSave = (e) => {
     const { song } = this.state
     const { id, editTrack } = this.props
     if (e.key === 'Enter' && song.length !== 0) {
@@ -22,23 +24,32 @@ class Track extends Component{
     }
   }
 
+
   render(){
     const { id, song, artist, album, delTrack } = this.props
     const { editing } = this.state
     console.log (id, song)
     return(
-      <div className="track__container">
-        {
-          editing
-          ?
-          <input className='editSong' value={this.state.song} onChange={this.handleChange} onKeyPress={this.editTrack} />
-          :
-          <span className='song'>{song}</span>
-        }
-        <span className='artist'>{artist}</span>
-        <span className='album'>{album}</span>
-        <button className='edit' onClick={ () => this.setState({ editing: !editing, song })}>edit</button>
-        <button className='delete' onClick={() => delTrack(id)}>X</button>
+      <div className="track">
+        <table>
+          <tbody>
+            <tr>
+              {
+                editing
+                ?
+                <input className='editSong' value={this.state.song} onChange={this.handleChange} onKeyPress={this.handleSave} />
+                :
+                <td className='song'>{song}</td>
+              }
+              <td className='artist'>{artist}</td>
+              <td className='album'>{album}</td>
+              
+            </tr>
+            
+          </tbody>
+        </table>
+        <button className='edit' onClick={ () => this.setState({ editing: !editing, song })}><BsPencil/></button>
+        <button className='delete' onClick={() => delTrack(id)}> <BsTrash /> </button>
       </div>
     )
   }

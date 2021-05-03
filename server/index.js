@@ -9,6 +9,7 @@ app.use(express.json())
 const tracksBaseUrl = '/api/tracks'
 app.post(tracksBaseUrl, tc.addTrack)                   // C  \\
 app.get(tracksBaseUrl, tc.getTracks)                  //  R   \\
+app.get(`${tracksBaseUrl}/search`, tc.filterTracks)
 app.put(`${tracksBaseUrl}/:id`, tc.editTrack)        //   U    \\
 app.delete(`${tracksBaseUrl}/:id`, tc.delTrack)     //    D     \\
 

@@ -3,7 +3,7 @@ let tracks = [
         id: 0,
         song: 'watch your step ft. kelis',
         artist: 'disclosure',
-        album: 'engery'
+        album: 'energy'
     },
     {
         id: 1,
@@ -18,6 +18,12 @@ let id = 2
 module.exports = {
     getTracks: (req, res) => {
         res.status(200).send(tracks)
+    },
+    filterTracks: (req, res) => {
+        const { song } = req.query
+        console.log(song)
+        const search = tracks.filter(track => track.song.toLowerCase().includes(song.toLowerCase()))
+        res.status(200).send(search)
     },
     addTrack: (req, res) => {
         console.log(req.body)

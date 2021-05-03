@@ -23,10 +23,11 @@ class Form extends Component {
   }
   
   handleAdd = () => {
+    const { song, artist, album } = this.state
     this.props.addTrack (
-      this.state.song,
-      this.state.artist,
-      this.state.album
+      song,
+      artist,
+      album
     )
     this.setState({
       title: '',
@@ -37,13 +38,14 @@ class Form extends Component {
 
   render() {
     return (
-      <div>
+      <div className='form'> 
         <form>
           <label htmlFor='addSong'>song</label>
           <input
             type='text'
             name='song'
             value={this.state.song}
+            placeholder='enter song'
             onChange={this.handleSong}
           />
           <label htmlFor='addArtist'>artist</label>
@@ -51,6 +53,7 @@ class Form extends Component {
             type='text'
             name='artist'
             value={this.state.artist}
+            placeholder='enter artist'
             onChange={this.handleArtist}
           />
           <label htmlFor='addAlbum'>album</label>
@@ -58,6 +61,7 @@ class Form extends Component {
             type='text'
             name='album'
             value={this.state.album}
+            placeholder='enter album'
             onChange={this.handleAlbum}
           />
         </form>

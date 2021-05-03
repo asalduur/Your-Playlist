@@ -23,8 +23,18 @@ class App extends Component {
     })
   }
 
+  filterTracks = (song) => {
+    axios.get(`/api/tracks/search?song=${song}`)
+    .then((res) => {
+      this.setState({tracks: res.data})
+    })
+    .catch((err) => {
+      console.log(err)
+    })
+  }
+
   addTrack = (song, artist, album) => {
-    axios.post('api/tracks', {song, artist, album})
+    axios.post('/api/tracks', {song, artist, album})
     .then((res) => {
       this.setState({tracks: res.data})
     })
@@ -56,12 +66,13 @@ class App extends Component {
   render() { 
     return (
       <div className="App">
-        <Form addTrack={this.addTrack}/>
         <Playlist 
           tracks={this.state.tracks}
+          filterTracks={this.filterTracks}
           delTrack={this.delTrack}
           editTrack={this.editTrack}
         />
+        <Form addTrack={this.addTrack}/>
       </div>
     );
   }
