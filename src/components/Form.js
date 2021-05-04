@@ -1,4 +1,5 @@
 import {Component} from 'react'
+import Input from '@material-ui/core/Input'
 
 class Form extends Component {
   constructor(props){
@@ -40,24 +41,24 @@ class Form extends Component {
     return (
       <div className='form'> 
         <form>
-          <label htmlFor='addSong'>song</label>
-          <input
+          {/* <label htmlFor='addSong'>song</label> */}
+          <Input
             type='text'
             name='song'
             value={this.state.song}
             placeholder='enter song'
             onChange={this.handleSong}
           />
-          <label htmlFor='addArtist'>artist</label>
-          <input
+          {/* <label htmlFor='addArtist'>artist</label> */}
+          <Input
             type='text'
             name='artist'
             value={this.state.artist}
             placeholder='enter artist'
             onChange={this.handleArtist}
           />
-          <label htmlFor='addAlbum'>album</label>
-          <input
+          {/* <label htmlFor='addAlbum'>album</label> */}
+          <Input
             type='text'
             name='album'
             value={this.state.album}

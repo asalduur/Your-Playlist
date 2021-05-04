@@ -10,7 +10,7 @@ body {
   text-align: center;
   width: 100vw;
   height: 100vh;
-  background-color: #2e2e32;
+  background-color: #303038;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -20,9 +20,11 @@ main {
   position: relative;
   width: 80%;
   height: 64%;
-  background-color: #3c3c42;
+  background-color: #3a3a42;
   padding-left: 40px;
-  margin: 10px;
+  margin-top: 20px;
+  /* border:1px solid #121222; */
+  box-shadow: 1px 1px 5px 2px #1f1f27;
   /* border-radius: 3%; */
   display: flex;
   flex-direction: column;
@@ -63,10 +65,10 @@ header {
 }
 
 .tracklist {
-  border: 1px solid #121222;
+  /* border: 1px solid #121222; */
   width: 85%;
   height: 60%;
-  box-shadow: 1px 4px 12px 0px rgba(0,0,0,0.61);
+  box-shadow: 1px 1px 5px 2px rgba(0,0,0,0.61);
   /* min-height: fit-content; */
   /* align-items: center; */
 }
@@ -102,7 +104,7 @@ td {
 } */
 
 .edit {
-  background-color: #3c3c42;
+  background-color: #3a3a42;
   color: #706edd;
   border: none;
   width: 35px;
@@ -113,7 +115,7 @@ td {
 }
 
 .delete {
-  background-color: #3c3c42;
+  background-color: #3a3a42;
   color: #706edd;
   border: none;
   width: 27px;
@@ -125,8 +127,9 @@ td {
 
 
 .form {
-  background-color: #3c3c42;
-  width: 82.2%;
+  background-color: #3a3a42;
+  /* width: 82.2%; */
+  width: 50%;
   height: 20%;
   display: flex;
   flex-direction: column;
@@ -134,12 +137,14 @@ td {
   align-items: center;
   position: absolute;
   bottom: 0;
+  box-shadow: 1px 1px 5px 2px #1f1f27;
   margin-bottom: 33px;
 
 }
-input {
+Input {
   margin-right: 35px;
   border: 1px solid #706edd;
+  color: #706edd
 }
 
 label {
@@ -164,21 +169,26 @@ button:hover {
 }
 
 footer {
-  background-color: #1f1f27;
+  background-color: #1a1a20;
   font-size: 20px;
   color:#a9a8db;
   width: 100%;
-  height: 10%;
+  height: 5%;
   position: absolute;
   bottom: 0;
   left:0;
   display: flex;
+  /* flex-direction: column; */
   justify-content: center;
   align-items: center;
 }
 
-.press-play {
+/* .press-play {
   background-color: #3c3c42;
   width: 40%;
   justify-content: space-evenly;
-}
+} */
+
+/* .playing {
+  border-bottom: 2px solid #706edd;
+} */
